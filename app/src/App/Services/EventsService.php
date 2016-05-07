@@ -8,32 +8,32 @@ class EventsService extends BaseService
     protected $cityMap = array(
         1 => array(
             'booking' => -345224,
-            'hotelbeds' => 'MAL',
+            'hotelbeds' => 'PMI',
             'musements' => 216,
         ),
         2 => array(
             'booking' => -372490,
-            'hotelbeds' => 'MAL',
+            'hotelbeds' => 'BCN',
             'musements' => 60,
         ),
         3 => array(
             'booking' => -1746443,
-            'hotelbeds' => 'MAL',
+            'hotelbeds' => 'BER',
             'musements' => 52,
         ),
         4 => array(
             'booking' => -2601889,
-            'hotelbeds' => 'MAL',
+            'hotelbeds' => 'LON',
             'musements' => 56,
         ),
         5 => array(
             'booking' => -1456928,
-            'hotelbeds' => 'MAL',
+            'hotelbeds' => 'PAR',
             'musements' => 40,
         ),
         6 => array(
             'booking' => -126693,
-            'hotelbeds' => 'MAL',
+            'hotelbeds' => 'ROE',
             'musements' => 2,
         ),
     );
@@ -106,7 +106,7 @@ class EventsService extends BaseService
                             'searchFilterItems' => array(
                                 array(
                                     'type' => 'destination',
-                                    'value' => 'BCN'
+                                    'value' => $id
                                 )
                             )
                         )
