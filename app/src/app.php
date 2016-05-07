@@ -44,10 +44,6 @@ $app->before(function (Request $request) {
 
 $app->register(new ServiceControllerServiceProvider());
 
-$app->register(new DoctrineServiceProvider(), array(
-  "db.options" => $app["db.options"]
-));
-
 $app->register(new HttpCacheServiceProvider(), array("http_cache.cache_dir" => ROOT_PATH . "/storage/cache",));
 
 $app->register(new MonologServiceProvider(), array(
