@@ -5,9 +5,9 @@ $(document).ready(function () {
 
 	$('#search-hotels').click(function() {
 		var coordinates = {};
-		$.each($('.event-selector').hasClass('event-selected'), function() {
-			console.log($(this).data('latitude'));
+		$.each($('.event-selected'), function() {
+			coordinates.push([$(this).data('latitude'), $(this).data('longitude')])
 		});
-		$('#event-selected').data('latitude')
+		console.log(coordinates);
 	});
 });
