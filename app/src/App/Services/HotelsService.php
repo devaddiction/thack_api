@@ -31,7 +31,7 @@ class HotelsService extends BaseService
             }
 
             foreach ($result['hotels'] as $k => $res) {
-                $result['hotels'][$k]['pictures'] = $hotel_pictures[$res['hotel_id']];
+                $result['hotels'][$k]['pictures'] = $hotel_pictures;
             }
             return $result;
         }
