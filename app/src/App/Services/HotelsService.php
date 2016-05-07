@@ -4,27 +4,6 @@ namespace App\Services;
 
 class HotelsService extends BaseService
 {
-    protected function getHotelBedsCall($url)
-    {
-        // Your API Key and secret
-        $apiKey = "t3gv6hdbhs23xtsem4p2auan";
-        $sharedSecret = "tFjZCmhCVh";
-
-        $signature = hash("sha256", $apiKey . $sharedSecret . time());
-
-        $client = new \GuzzleHttp\Client();
-
-        $result = $client->request('GET', $url, [
-                'headers' => [
-                    "Api-Key" => $apiKey,
-                    "X-Signature" => $signature,
-                    "Accept" => "application/json"
-                ]
-            ]
-        );
-        return $result;
-    }
-
     public function getByCoordinates($checkIn, $checkOut, $latitude, $longitude)
     {
         $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/getHotelAvailabilityV2?latitude=" .
