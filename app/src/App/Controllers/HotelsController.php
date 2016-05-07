@@ -18,13 +18,21 @@ class HotelsController
 
     public function getByCoordinates($checkIn, $checkOut, Request $request)
     {
-        $coordinates = $request->request->get("coordinates");
-        if (empty($coordinates)) {
-            throw new \BadMethodCallException('Missing Coordinates');
-        }
+//        $coordinates = $request->request->get("coordinates");
+//        if (empty($coordinates)) {
+//            throw new \BadMethodCallException('Missing Coordinates');
+//        }
+        $coordinates = [
+            [ 'x' => 40.415255, 'y' => -3.724648],
+            [ 'x' => 40.418582, 'y' => -3.722536],
+            [ 'x' => 40.415206, 'y' => -3.714759],
+            [ 'x' => 40.414039, 'y' => -3.686329]
+        ];
+
+        list($latitude, $longitude, $dummy, $ratio) = $this->getBestGeoByGeos($coordinates);
         return new JsonResponse(
             $this->hotelsService->getByCoordinates(
-                $this->getBestGeoByGeos($checkIn, $checkOut, $coordinates)
+                $checkIn, $checkOut, $latitude, $longitude
             )
         );
     }
