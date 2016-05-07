@@ -66,4 +66,12 @@ $app->error(function (\Exception $e, $code) use ($app) {
     return new JsonResponse(array("statusCode" => $code, "message" => $e->getMessage(), "stacktrace" => $e->getTraceAsString()));
 });
 
+
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path'         => __DIR__.'/views',
+    'twig.class_path'   => __DIR__.'/vendor/twig/lib',
+));
+$app->before(function () use ($app) {
+    $app['twig']->addGlobal('layout', $app['twig']->loadTemplate('layout.twig'));
+});
 return $app;

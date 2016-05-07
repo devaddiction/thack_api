@@ -17,6 +17,9 @@ class RoutesLoader
 
     private function instantiateControllers()
     {
+        $this->app['web.controller'] = $this->app->share(function () {
+            return new Controllers\WebController($this->app['twig']);
+        });
         $this->app['cities.controller'] = $this->app->share(function () {
             return new Controllers\CitiesController($this->app['cities.service']);
         });
@@ -30,14 +33,16 @@ class RoutesLoader
 
     public function bindRoutesToControllers()
     {
-        $api = $this->app["controllers_factory"];
+        $api = $web = $this->app["controllers_factory"];
 
+        $web->get('/', "web.controller:home");
         $api->get('/cities', "cities.controller:getAll");
         $api->get('/events/city/{id}', "events.controller:getByCity");
         $api->get('/events/city/{id}', "events.controller:getByCity");
         $api->post('/hotels/around', "hotels.controller:getByCoordinates");
 
-        $this->app->mount($this->app["api.endpoint"].'/'.$this->app["api.version"], $api);
+        $this->app->mount($this->app["api.endpoint"] . '/' . $this->app["api.version"], $api);
+        $this->app->mount('/', $web);
     }
 }
 
