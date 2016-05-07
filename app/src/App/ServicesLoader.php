@@ -21,6 +21,9 @@ class ServicesLoader
         $this->app['events.service'] = $this->app->share(function () {
             return new Services\EventsService();
         });
+        $this->app['hotels.service'] = $this->app->share(function () {
+            return new Services\HotelsService();
+        });
     }
 }
 

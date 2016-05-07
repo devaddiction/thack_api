@@ -23,6 +23,9 @@ class RoutesLoader
         $this->app['events.controller'] = $this->app->share(function () {
             return new Controllers\EventsController($this->app['events.service']);
         });
+        $this->app['hotels.controller'] = $this->app->share(function () {
+            return new Controllers\HotelsController($this->app['hotels.service']);
+        });
     }
 
     public function bindRoutesToControllers()
