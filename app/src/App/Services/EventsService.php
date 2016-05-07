@@ -109,7 +109,6 @@ class EventsService extends BaseService
 
     public function getHotelBedsEvents($id)
     {
-        // Your API Key and secret
         $apiKey = "k7vwmbh5bauxdsju2yuq9xj2";
         $sharedSecret = "DvzsbFhUHN";
 
@@ -143,6 +142,4 @@ class EventsService extends BaseService
         );
         return json_decode($response->getBody());
     }
-
-
 }
