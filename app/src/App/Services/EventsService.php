@@ -7,7 +7,26 @@ class EventsService extends BaseService
 
     public function getByCity($id)
     {
-        $baseUrl = 'https://app.xapix.io/api/v1/thm16_tech_beatles/hotels?fields%5Bhotels%5D=license%2Cemail%2Ccity_0_content%2Cpostalcode%2Caddress_0_content%2Caccommodationtypecode%2Cchaincode%2Ccategorycode%2Ccoordinates_0_latitude%2Ccoordinates_0_longitude%2Czonecode%2Cdestinationcode%2Ccountrycode%2Cdescription_0_content%2Cname_0_content%2Ccode&sort=code&page%5Bnumber%5D=1&page%5Bsize%5D=100';
-        return ;
+        $url = "https://app.xapix.io/api/v1/thm16_tech_beatles/city_events?filter[city_id]={$id}".
+            "&fields[city_events]=city_id,url,longitude,latitude,reviews_avg,reviews_number,discount,".
+            "net_price_0_formatted_value,net_price_0_value,net_price_0_currency,retail_price_0_formatted_value,".
+            "retail_price_0_value,retail_price_0_currency,cover_image_url,is_available_tomorrow,is_available_today,".
+            "daily,exclusive,ticket_not_included,open,duration,about,description,temporary,top_seller,last_chance,".
+            "must_see,max_confirmation_time,relevance,title,saves,city_0_url,city_0_cover_image_url,city_1_name,".
+            "city_1_x_id,city_0_name,city_0_x_id,x_id&sort=x_id&page[number]=1&page[size]=1000";
+        $client = new \GuzzleHttp\Client();
+
+        $result = $client->request('GET', $url, [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+                'Authorization-Token' => 'GAes76CZnkHTPJoBV0rtgz5Y9Fiq2LQI',
+            ],
+        ]);
+
+        if ($result->getStatusCode() == 200) {
+            return json_decode($result->getBody(), true);
+        }
+        return false;
     }
 }
