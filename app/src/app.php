@@ -68,7 +68,7 @@ $app->error(function (\Exception $e, $code) use ($app) {
 
 
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path'         => __DIR__.'/views',
+    'twig.path'         => __DIR__.'/Views',
     'twig.class_path'   => __DIR__.'/vendor/twig/lib',
 ));
 $app->before(function () use ($app) {
