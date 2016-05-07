@@ -8,7 +8,7 @@ server {
         index index.php index.html index.htm;
 
         # Make site accessible from http://localhost/
-        server_name local.api.technobeatles.com
+        server_name local.api.activiti.es
 
         location @rewrite_phalcon {
                 rewrite ^/(.*)$ /index.php?_url=/$1;

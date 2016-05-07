@@ -1,5 +1,5 @@
 ---
-  name: technobeatles-api
+  name: activiti-es dev box
   hostname: local.api.activiti.es
   box: ubuntu/trusty64
   provider: virtualbox

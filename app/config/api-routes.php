@@ -4,7 +4,7 @@ $routes[] = array(
     'route' => '/cities',
     'handler' => array(
         "controller" => "CitiesController",
-        "action" => "getCitiesAction"
+        "action" => "getAction"
     )
 );
 return $routes;

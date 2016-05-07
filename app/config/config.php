@@ -5,8 +5,8 @@ error_reporting(0);
  */
 $settings = array(
     'environment' => 'production',
-    'serverName' => 'http://local.api.technobeatles.com/',
-    'api_domain' => 'http://local.api.technobeatles.com/',
+    'serverName' => 'http://local.api.activiti.es/',
+    'api_domain' => 'http://local.api.activiti.es/',
 );
 
 return $settings;
