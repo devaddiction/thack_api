@@ -20,7 +20,7 @@ class HotelsController
     {
         $coordinates = $request->request->get("coordinates");
         if (empty($coordinates)) {
-            throw new \BadMethodCallException('You have to provider coordinates');
+            throw new \BadMethodCallException('Missing Coordinates');
         }
         return new JsonResponse(
             $this->hotelsService->getByCoordinates(

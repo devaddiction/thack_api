@@ -9,7 +9,7 @@ class HotelsService extends BaseService
     public function getByCoordinate($coordinate, $checkIn, $checkOut)
     {
         $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/getHotelAvailabilityV2?latitude=".
-            $coordinate[0]."&longitude=".$coordinate[1]."&checkin={$checkIn}&checkout={$checkOut}&room1=A,A";
+            $coordinate[0]."&longitude=".$coordinate[1]."&checkin={$checkIn}&checkout={$checkOut}&room1=A,A&order_by=distance";
         $client = new \GuzzleHttp\Client();
 
         $result = $client->request('GET', $url);

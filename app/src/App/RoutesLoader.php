@@ -34,7 +34,7 @@ class RoutesLoader
 
         $api->get('/cities', "cities.controller:getAll");
         $api->get('/events/city/{id}', "events.controller:getByCity");
-        $api->get('/hotels/around/{checkIn}/{checkOut}', "hotels.controller:getByCoordinates");
+        $api->post('/hotels/around/{checkIn}/{checkOut}', "hotels.controller:getByCoordinates");
 
         $this->app->mount($this->app["api.endpoint"].'/'.$this->app["api.version"], $api);
     }
