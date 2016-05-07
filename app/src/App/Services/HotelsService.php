@@ -4,10 +4,31 @@ namespace App\Services;
 
 class HotelsService extends BaseService
 {
+    protected function getHotelBedsCall($url)
+    {
+        // Your API Key and secret
+        $apiKey = "t3gv6hdbhs23xtsem4p2auan";
+        $sharedSecret = "tFjZCmhCVh";
+
+        $signature = hash("sha256", $apiKey . $sharedSecret . time());
+
+        $client = new \GuzzleHttp\Client();
+
+        $result = $client->request('GET', $url, [
+                'headers' => [
+                    "Api-Key" => $apiKey,
+                    "X-Signature" => $signature,
+                    "Accept" => "application/json"
+                ]
+            ]
+        );
+        return $result;
+    }
+
     public function getByCoordinates($checkIn, $checkOut, $latitude, $longitude)
     {
         $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/getHotelAvailabilityV2?latitude=" .
-            $latitude . "&longitude=" . $longitude . "&checkin={$checkIn}&checkout={$checkOut}&room1=A,A&".
+            $latitude . "&longitude=" . $longitude . "&checkin={$checkIn}&checkout={$checkOut}&room1=A,A&" .
             "order_by=distance&rows=10";
         $client = new \GuzzleHttp\Client();
 
@@ -20,7 +41,7 @@ class HotelsService extends BaseService
                 $ids[] = $res['hotel_id'];
             }
 
-            $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/bookings.getHotelDescriptionPhotos".
+            $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/bookings.getHotelDescriptionPhotos" .
                 "?hotel_ids=" . implode(',', $ids);
             $pics = $client->request('GET', $url);
             $pics = json_decode($pics->getBody(), true);
