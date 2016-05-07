@@ -1,0 +1,9 @@
+---
+  name: technobeatles-api
+  hostname: local.api.technobeatles.com
+  box: ubuntu/trusty64
+  provider: virtualbox
+  gui: false
+  ram: 1024
+  cpus: 1
+  ip: 192.168.10.10

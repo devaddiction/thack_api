@@ -1,0 +1,63 @@
+server {
+        listen 80;
+        listen [::]:80 default_server ipv6only=on;
+
+        set $root_path '/var/www/htdocs/app/public';
+
+        root $root_path;
+        index index.php index.html index.htm;
+
+        # Make site accessible from http://localhost/
+        server_name local.api.technobeatles.com
+
+        location @rewrite_phalcon {
+                rewrite ^/(.*)$ /index.php?_url=/$1;
+        }
+
+        location = / {
+                root $root_path;
+
+                try_files $uri $uri/ @rewrite_phalcon;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+
+                # With php5-cgi alone:
+                #fastcgi_pass 127.0.0.1:9000;
+                # With php5-fpm:
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+
+                include fastcgi_params;
+                fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+                fastcgi_param PATH_INFO       $fastcgi_path_info;
+                fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        }
+
+        location / {
+                root $root_path;
+
+                try_files $uri $uri/ @rewrite_phalcon;
+                location ~ \.php$ {
+                        root $root_path;
+
+                        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+
+                        fastcgi_pass unix:/var/run/php5-fpm.sock;
+                        fastcgi_index index.php;
+
+                        include fastcgi_params;
+                        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+                        fastcgi_param PATH_INFO       $fastcgi_path_info;
+                        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+                        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                }
+        }
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        location ~ /\.ht {
+                deny all;
+        }
+}
