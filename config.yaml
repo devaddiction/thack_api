@@ -1,6 +1,6 @@
 ---
   name: technobeatles-api
-  hostname: local.api.technobeatles.com
+  hostname: local.api.activiti.es
   box: ubuntu/trusty64
   provider: virtualbox
   gui: false
