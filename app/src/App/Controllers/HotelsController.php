@@ -16,7 +16,7 @@ class HotelsController
         $this->hotelsService = $service;
     }
 
-    public function getByCoordinates($checkIn, $checkOut, Request $request)
+    public function getByCoordinatesWithDates($checkIn, $checkOut, Request $request)
     {
         $coordinates = $request->request->get("coordinates");
         if (empty($coordinates)) {
@@ -28,6 +28,17 @@ class HotelsController
                 $checkIn, $checkOut, $coordinates['x'], $coordinates['y']
             )
         );
+    }
+
+    public function getByCoordinates(Request $request)
+    {
+        if (empty($checkIn)) {
+            $checkIn = date('Y-m-d', strtotime('next friday'));
+        }
+        if (empty($checkOut)) {
+            $checkOut = date('Y-m-d', strtotime('next sunday', strtotime('next friday')));
+        }
+        return $this->getByCoordinatesWithDates($checkIn, $checkOut, $request);
     }
 
     protected function getBestGeoByGeos($geoArray)
