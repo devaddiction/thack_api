@@ -15,11 +15,13 @@
             <span class="image" id="event-selector" data-latitude="{{ event.latitude }}" data-longitude="{{ event.latitude }}">
                 <img src="{{ event.picture }}" alt="{{ event.name }}"/>
 									</span>
-                <h2>{{ event.name }}</h2>
-                <div class="content">
-                    <p>{{ event.price }}</p></br>
-                    {{ event.provider }}
-                </div>
+                <a href="javascript:void(0);">
+                    <h2>{{ event.name }}</h2>
+                    <div class="content">
+                        <p>{{ event.price }}</p></br>
+                        {{ event.provider }}
+                    </div>
+                </a>
             </article>
         {% endfor %}
     </section>
