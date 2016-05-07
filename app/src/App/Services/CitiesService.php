@@ -10,7 +10,7 @@ class CitiesService extends BaseService
         $mockedCities = array(
             array(
                 'name' => 'Palma de Mallorca',
-                'picture' => 'http://www.spain.info/export/sites/spaininfo/comun/carrusel-recursos/baleares/vista-palma-de-mallorca-2183112-istock.jpg_369272544.jpg',
+                'picture' => 'http://api.activiti.es/images/thumbs/palma.png',
                 'thumbnail' => 'http://www.spain.info/export/sites/spaininfo/comun/carrusel-recursos/baleares/vista-palma-de-mallorca-2183112-istock.jpg_369272544.jpg',
                 'city_id' => 1,
                 'booking_id' => -345224,
