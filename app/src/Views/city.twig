@@ -12,10 +12,12 @@
     <section class="tiles">
         {% for event in events %}
             <article class="style{{ random([1,2,3,4,5,6]) }}">
-            <span class="image">
-                <img src="{{ event.picture }}" alt="{{ event.name }}"/>
-									</span>
-                <a href="javascript:void(0);"  id="event-selector" data-latitude="{{ event.latitude }}" data-longitude="{{ event.latitude }}">
+                <span class="image event-selector"
+                      data-latitude="{{ event.latitude }}"
+                      data-longitude="{{ event.latitude }}">
+                    <img src="{{ event.picture }}" alt="{{ event.name }}"/>
+                </span>
+                <a href="javascript:void(0">
                     <h2>{{ event.name }}</h2>
                     <div class="content">
                         <p>{{ event.price }}</p></br>
