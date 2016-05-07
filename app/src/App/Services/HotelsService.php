@@ -12,8 +12,28 @@ class HotelsService extends BaseService
         $result = $client->request('GET', $url);
 
         if ($result->getStatusCode() == 200) {
-            return json_decode($result->getBody(), true);
+            $result =  json_decode($result->getBody(), true);
+            $ids = array();
+            foreach($result['hotels'] as $k=>$res){
+                $ids[]=$res['hotel_id'];
+            }
+
+            $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/bookings.getHotelDescriptionPhotos?hotel_ids=".implode(',',$ids);
+            $pics = $client->request('GET', $url);
+            $pics = json_decode($pics->getBody(), true);
+
+            $hotel_pictures = array();
+            foreach($pics as $pic){
+                $hotel_pictures['hotel_id'] = $pic;
+            }
+
+            foreach($result['hotels'] as $k=>$res){
+                $result['hotels'][$k]['pictures']=$hotel_pictures[$res['hotel_id']];
+            }
+            return $result;
+
         }
+
         return false;
     }
 }
