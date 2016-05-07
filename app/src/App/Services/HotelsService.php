@@ -15,6 +15,7 @@ class HotelsService extends BaseService
 {
     public function getByCoordinates($checkIn, $checkOut, $latitude, $longitude)
     {
+        return $this->getBookingByCoordinates($checkIn, $checkOut, $latitude, $longitude);
         return array(
             'hotelbeds' => $this->getHotelBedsByCoordinates($checkIn, $checkOut, $latitude, $longitude),
             'booking' => $this->getBookingByCoordinates($checkIn, $checkOut, $latitude, $longitude),
@@ -53,7 +54,6 @@ class HotelsService extends BaseService
         $availRS = $apiClient->Availability($rqData);
         $result = $availRS->hotels->toArray();
         print_r($result);
-        die;
         die;
 
 //        return json_decode($response->getBody());
