@@ -83,6 +83,7 @@ class EventsService extends BaseService
                 );
             }
         }
+        shuffle($activities);
         return $activities;
 
     }
