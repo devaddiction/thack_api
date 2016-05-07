@@ -59,7 +59,8 @@ class EventsService extends BaseService
                 'longitude'=>$event['longitude'],
                 'picture'=>$event['cover_image_url'],
                 'deeplink'=>$event['url'],
-                'price'=>$event['net_price_0_formatted_value']
+                'price'=>$event['net_price_0_formatted_value'],
+                'provider'=>'musement'
             );
         }
         $musements = null;
@@ -72,7 +73,8 @@ class EventsService extends BaseService
                 'longitude'=>$event['content']['location']['startingPoints'][0]['meetingPoint']['geolocation']['longitude'],
                 'picture'=>$event['content']['media']['images'][0]['urls'][0]['resource'],
                 'deeplink'=>$event['url'],
-                'price'=>$event['amountsFrom'][0]['amount']. ' '. $event['currency']
+                'price'=>$event['amountsFrom'][0]['amount']. ' '. $event['currency'],
+                'provider'=>'hotelbeds'
             );
         }
         return $activities;
