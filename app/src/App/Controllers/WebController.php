@@ -14,6 +14,16 @@ class WebController
 
     public function home()
     {
-        return $this->twig->render('index.twig');
+        $url = "http://api.activiti.es/api/v1/cities";
+        $client = new \GuzzleHttp\Client();
+
+        $result = $client->request('GET', $url, [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ],
+        ]);
+        print_r($result->getBody()); die;
+        return $this->twig->render('index.twig', array('cities' => \GuzzleHttp\json_decode($result->getBody(), false)));
     }
 }

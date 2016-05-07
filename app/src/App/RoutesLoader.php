@@ -33,16 +33,15 @@ class RoutesLoader
 
     public function bindRoutesToControllers()
     {
-        $api = $web = $this->app["controllers_factory"];
+        $app = $this->app["controllers_factory"];
 
-        $web->get('/', "web.controller:home");
-        $api->get('/cities', "cities.controller:getAll");
-        $api->get('/events/city/{id}', "events.controller:getByCity");
-        $api->get('/events/city/{id}', "events.controller:getByCity");
-        $api->post('/hotels/around', "hotels.controller:getByCoordinates");
+        $app->get('/', "web.controller:home");
+        $app->get($this->app["api.endpoint"] . '/' . $this->app["api.version"]. '/cities', "cities.controller:getAll");
+        $app->get($this->app["api.endpoint"] . '/' . $this->app["api.version"]. '/events/city/{id}', "events.controller:getByCity");
+        $app->get($this->app["api.endpoint"] . '/' . $this->app["api.version"]. '/events/city/{id}', "events.controller:getByCity");
+        $app->post($this->app["api.endpoint"] . '/' . $this->app["api.version"]. '/hotels/around', "hotels.controller:getByCoordinates");
 
-        $this->app->mount($this->app["api.endpoint"] . '/' . $this->app["api.version"], $api);
-        $this->app->mount('/', $web);
+        $this->app->mount('', $app);
     }
 }
 

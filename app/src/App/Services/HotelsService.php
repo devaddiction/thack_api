@@ -24,7 +24,6 @@ class HotelsService extends BaseService
 
     protected function getHotelBedsByCoordinates($checkIn, $checkOut, $latitude, $longitude)
     {
-
         $cfgApi = array(
             'url' => 'https://api.test.hotelbeds.com',
             'apiKey' => "t3gv6hdbhs23xtsem4p2auan",
