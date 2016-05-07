@@ -52,29 +52,29 @@ class EventsService extends BaseService
     {
         $musements = $this->getMusementsEvents($this->getMusementsCityId($id));
         $activities = array();
-        foreach($musements['city_events'] as $event){
+        foreach ($musements['city_events'] as $event) {
             $activities[] = array(
-                'name'=>$event['title'],
-                'latitude'=>$event['latitude'],
-                'longitude'=>$event['longitude'],
-                'picture'=>$event['cover_image_url'],
-                'deeplink'=>$event['url'],
-                'price'=>$event['net_price_0_formatted_value'],
-                'provider'=>'musement'
+                'name' => $event['title'],
+                'latitude' => $event['latitude'],
+                'longitude' => $event['longitude'],
+                'picture' => $event['cover_image_url'],
+                'deeplink' => $event['url'],
+                'price' => $event['net_price_0_formatted_value'],
+                'provider' => 'musement'
             );
         }
         $musements = null;
         unset($musements);
         $hotelbeds = $this->getHotelBedsEvents($this->getHotelBedsCityId($id));
-        foreach($hotelbeds['activities'] as $event){
+        foreach ($hotelbeds['activities'] as $event) {
             $activities[] = array(
-                'name'=>$event['name'],
-                'latitude'=>$event['content']['location']['startingPoints'][0]['meetingPoint']['geolocation']['latitude'],
-                'longitude'=>$event['content']['location']['startingPoints'][0]['meetingPoint']['geolocation']['longitude'],
-                'picture'=>$event['content']['media']['images'][0]['urls'][0]['resource'],
-                'deeplink'=>$event['url'],
-                'price'=>$event['amountsFrom'][0]['amount']. ' '. $event['currency'],
-                'provider'=>'hotelbeds'
+                'name' => $event['name'],
+                'latitude' => $event['content']['location']['startingPoints'][0]['meetingPoint']['geolocation']['latitude'],
+                'longitude' => $event['content']['location']['startingPoints'][0]['meetingPoint']['geolocation']['longitude'],
+                'picture' => $event['content']['media']['images'][0]['urls'][0]['resource'],
+                'deeplink' => $event['url'],
+                'price' => $event['amountsFrom'][0]['amount'] . ' ' . $event['currency'],
+                'provider' => 'hotelbeds'
             );
         }
         return $activities;
@@ -140,6 +140,6 @@ class EventsService extends BaseService
                 )
             ]
         );
-        return json_decode($response->getBody());
+        return json_decode($response->getBody(), true);
     }
 }
