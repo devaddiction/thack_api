@@ -15,19 +15,18 @@
             <span class="image" id="event-selector" data-latitude="{{ event.latitude }}" data-longitude="{{ event.latitude }}">
                 <img src="{{ event.picture }}" alt="{{ event.name }}"/>
 									</span>
-                <a href="#">
-                    <h2>{{ event.name }}</h2>
-                    <div class="content">
-                        <p>{{ event.price }}</p></br>
-                        {{ event.provider }}
-                    </div>
-                </a>
+                <h2>{{ event.name }}</h2>
+                <div class="content">
+                    <p>{{ event.price }}</p></br>
+                    {{ event.provider }}
+                </div>
             </article>
         {% endfor %}
     </section>
+    <span id="search-hotels">Search</span>
 {% endblock %}
 
 
 {% block javascript %}
-    <script src="assets/js/app/city.js"></script>
+    <script src="/assets/js/app/city.js"></script>
 {% endblock %}
