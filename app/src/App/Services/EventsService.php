@@ -5,17 +5,9 @@ namespace App\Services;
 class EventsService extends BaseService
 {
 
-    public function getAll()
+    public function getByCity($id)
     {
-        $mallorca = array(
-            'name' => 'Palma de Mallorca',
-            'picture' => 'http://www.spain.info/export/sites/spaininfo/comun/carrusel-recursos/baleares/vista-palma-de-mallorca-2183112-istock.jpg_369272544.jpg',
-            'city_id' => 1,
-            'booking_id' => 1,
-            'hotelbeds_id' => 2,
-            'musements_id' => 3,
-        );
-        $mockedCities[] = $mallorca;
-        return $mockedCities;
+        $baseUrl = 'https://app.xapix.io/api/v1/thm16_tech_beatles/hotels?fields%5Bhotels%5D=license%2Cemail%2Ccity_0_content%2Cpostalcode%2Caddress_0_content%2Caccommodationtypecode%2Cchaincode%2Ccategorycode%2Ccoordinates_0_latitude%2Ccoordinates_0_longitude%2Czonecode%2Cdestinationcode%2Ccountrycode%2Cdescription_0_content%2Cname_0_content%2Ccode&sort=code&page%5Bnumber%5D=1&page%5Bsize%5D=100';
+        return ;
     }
 }

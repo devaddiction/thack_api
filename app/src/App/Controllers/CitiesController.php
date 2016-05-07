@@ -9,45 +9,15 @@ use Symfony\Component\HttpFoundation\Response;
 class CitiesController
 {
 
-    protected $notesService;
+    protected $citiesService;
 
     public function __construct($service)
     {
-        $this->notesService = $service;
+        $this->citiesService = $service;
     }
 
     public function getAll()
     {
-        return new JsonResponse($this->notesService->getAll());
-    }
-
-    public function save(Request $request)
-    {
-
-        $note = $this->getDataFromRequest($request);
-        return new JsonResponse(array("id" => $this->notesService->save($note)));
-
-    }
-
-    public function update($id, Request $request)
-    {
-        $note = $this->getDataFromRequest($request);
-        $this->notesService->update($id, $note);
-        return new JsonResponse($note);
-
-    }
-
-    public function delete($id)
-    {
-
-        return new JsonResponse($this->notesService->delete($id));
-
-    }
-
-    public function getDataFromRequest(Request $request)
-    {
-        return $note = array(
-            "note" => $request->request->get("note")
-        );
+        return new JsonResponse($this->citiesService->getAll());
     }
 }
