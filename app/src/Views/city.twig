@@ -1,0 +1,33 @@
+{% extends layout %}
+
+{% block header %}
+    <header>
+        <h1>{{ city.name }}</h1>
+        <p>{{ city.long_description }}</p>
+    </header>
+{% endblock %}
+
+
+{% block content %}
+    <section class="tiles">
+        {% for events in event %}
+            <article class="style">
+            <span class="image">
+                <img src="{{ event.picture }}" alt="{{ event.name }}"/>
+									</span>
+                <a href="#}">
+                    <h2>{{ event.name }}</h2>
+                    <div class="content">
+                        <p>{{ event.price }}</p></br>
+                        {{ event.provider }}
+                    </div>
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}
+
+
+{% block javascript %}
+    <script src="assets/js/app/index.js"></script>
+{% endblock %}

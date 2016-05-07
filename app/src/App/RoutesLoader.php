@@ -36,6 +36,7 @@ class RoutesLoader
         $app = $this->app["controllers_factory"];
 
         $app->get('/', "web.controller:home");
+        $app->get('/city/{id}', "web.controller:city");
         $app->get($this->app["api.endpoint"] . '/' . $this->app["api.version"]. '/cities', "cities.controller:getAll");
         $app->get($this->app["api.endpoint"] . '/' . $this->app["api.version"]. '/events/city/{id}', "events.controller:getByCity");
         $app->get($this->app["api.endpoint"] . '/' . $this->app["api.version"]. '/events/city/{id}', "events.controller:getByCity");
