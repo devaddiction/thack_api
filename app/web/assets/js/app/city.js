@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 	$('.event-selector').on('click', function() {
 		$(this).toggleClass('event-selected');
