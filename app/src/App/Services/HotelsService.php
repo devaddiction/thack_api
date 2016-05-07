@@ -2,11 +2,14 @@
 
 namespace App\Services;
 
+use Symfony\Component\Yaml\Tests\A;
+
 class HotelsService extends BaseService
 {
-    public function getByCoordinates($coordinates)
+    public function getByCoordinate($coordinate, $checkIn, $checkOut)
     {
-        $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/getHotelAvailabilityV2?latitude=40.415258152971&longitude=-3.7148935609517&checkin=2016-07-01&checkout=2016-07-02&room1=A,A";
+        $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/getHotelAvailabilityV2?latitude=".
+            $coordinate[0]."&longitude=".$coordinate[1]."&checkin={$checkIn}&checkout={$checkOut}&room1=A,A";
         $client = new \GuzzleHttp\Client();
 
         $result = $client->request('GET', $url);
