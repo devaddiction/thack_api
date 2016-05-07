@@ -4,7 +4,7 @@ $(document).ready(function () {
 	});
 
 	$('#search-hotels').click(function() {
-		var coordinates = {};
+		var coordinates = [];
 		$.each($('.event-selected'), function() {
 			coordinates.push([$(this).data('latitude'), $(this).data('longitude')])
 		});
