@@ -53,7 +53,7 @@ class EventsService extends BaseService
         $musements = $this->getMusementsEvents($this->getMusementsCityId($id));
         $activities = array();
         foreach ($musements['city_events'] as $event) {
-            if (is_float($event['latitude']) && is_float($event['longitude'])) {
+            if (is_numeric($event['latitude']) && is_numeric($event['longitude'])) {
                 $activities[] = array(
                     'name' => $event['title'],
                     'latitude' => $event['latitude'],
@@ -69,8 +69,8 @@ class EventsService extends BaseService
         unset($musements);
         $hotelbeds = $this->getHotelBedsEvents($this->getHotelBedsCityId($id));
         foreach ($hotelbeds['activities'] as $event) {
-            if (is_float($event['content']['location']['startingPoints'][0]['meetingPoint']['geolocation']['latitude']) &&
-                is_float($event['content']['location']['startingPoints'][0]['meetingPoint']['geolocation']['longitude'])
+            if (is_numeric($event['content']['location']['startingPoints'][0]['meetingPoint']['geolocation']['latitude']) &&
+                is_numeric($event['content']['location']['startingPoints'][0]['meetingPoint']['geolocation']['longitude'])
             ) {
                 $activities[] = array(
                     'name' => $event['name'],
