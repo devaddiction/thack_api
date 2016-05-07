@@ -12,10 +12,10 @@
     <section class="tiles">
         {% for event in events %}
             <article class="style{{ random([1,2,3,4,5,6]) }}">
-            <span class="image">
+            <span class="image" id="event-selector" data-latitude="{{ event.latitude }}" data-longitude="{{ event.latitude }}">
                 <img src="{{ event.picture }}" alt="{{ event.name }}"/>
 									</span>
-                <a href="#}">
+                <a href="#">
                     <h2>{{ event.name }}</h2>
                     <div class="content">
                         <p>{{ event.price }}</p></br>
@@ -29,5 +29,5 @@
 
 
 {% block javascript %}
-    <script src="assets/js/app/index.js"></script>
+    <script src="assets/js/app/city.js"></script>
 {% endblock %}
