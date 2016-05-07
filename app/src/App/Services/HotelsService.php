@@ -7,7 +7,8 @@ class HotelsService extends BaseService
     public function getByCoordinates($checkIn, $checkOut, $latitude, $longitude)
     {
         $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/getHotelAvailabilityV2?latitude=" .
-            $latitude . "&longitude=" . $longitude . "&checkin={$checkIn}&checkout={$checkOut}&room1=A,A&order_by=distance";
+            $latitude . "&longitude=" . $longitude . "&checkin={$checkIn}&checkout={$checkOut}&room1=A,A&".
+            "order_by=distance&rows=10";
         $client = new \GuzzleHttp\Client();
 
         $result = $client->request('GET', $url);
@@ -19,7 +20,8 @@ class HotelsService extends BaseService
                 $ids[] = $res['hotel_id'];
             }
 
-            $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/bookings.getHotelDescriptionPhotos?hotel_ids=" . implode(',', $ids);
+            $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/bookings.getHotelDescriptionPhotos".
+                "?hotel_ids=" . implode(',', $ids);
             $pics = $client->request('GET', $url);
             $pics = json_decode($pics->getBody(), true);
 

@@ -22,10 +22,10 @@ class HotelsController
         if (empty($coordinates)) {
             throw new \BadMethodCallException('Missing Coordinates');
         }
-        list($latitude, $longitude, $dummy, $ratio) = $this->getBestGeoByGeos($coordinates);
+        $coordinates = $this->getBestGeoByGeos($coordinates);
         return new JsonResponse(
             $this->hotelsService->getByCoordinates(
-                $checkIn, $checkOut, $latitude, $longitude
+                $checkIn, $checkOut, $coordinates['x'], $coordinates['y']
             )
         );
     }
