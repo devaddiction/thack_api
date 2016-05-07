@@ -9,11 +9,11 @@ class CitiesService extends BaseService
     {
         $mockedCities = array(
             array(
-                'name' => 'Palma de Mallorca',
+                'name' => 'Palma de Majorca',
                 'picture_thumb' => 'http://api.activiti.es/images/thumbs/palma.png',
                 'picture_header' => '',
-                'short_description' => '',
-                'long_description' => '',
+                'short_description' => 'A fusion of history and fun',
+                'long_description' => 'Palma de Majorca is the capital city of the Balearic Islands in Spain, offering a great mixture of fascinating history, marvellous architecture and vibrant nightlife.',
                 'city_id' => 1,
                 'booking_id' => -345224,
                 'hotelbeds_id' => 0,
@@ -23,8 +23,8 @@ class CitiesService extends BaseService
                 'name' => 'Barcelona',
                 'picture_thumb' => 'http://api.activiti.es/images/thumbs/barcelona.png',
                 'picture_header' => '',
-                'short_description' => '',
-                'long_description' => '',
+                'short_description' => 'Vibrant and Colourful Barcelona',
+                'long_description' => 'Lively and colourful Barcelona faces the Mediterranean Sea and features the world\'s top city beaches, including Sant Sebastià, Barceloneta and Somorrostro beaches. There is plenty to see and experience in this city of great architecture: the historic Gothic Quarter, the amazing modernist design of Gaudi’s creations and the popular Las Ramblas.',
                 'city_id' => 2,
                 'booking_id' => -372490,
                 'hotelbeds_id' => 0,
