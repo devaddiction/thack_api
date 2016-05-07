@@ -35,6 +35,33 @@ class CitiesService extends BaseService
                 'hotelbeds_id' => 0,
                 'musements_id' => 52,
             ),
+            array(
+                'name' => 'London',
+                'picture' => 'http://www.spain.info/export/sites/spaininfo/comun/carrusel-recursos/baleares/vista-palma-de-mallorca-2183112-istock.jpg_369272544.jpg',
+                'thumbnail' => 'http://www.spain.info/export/sites/spaininfo/comun/carrusel-recursos/baleares/vista-palma-de-mallorca-2183112-istock.jpg_369272544.jpg',
+                'city_id' => 4,
+                'booking_id' => -2601889,
+                'hotelbeds_id' => 0,
+                'musements_id' => 56,
+            ),
+            array(
+                'name' => 'Paris',
+                'picture' => 'http://www.spain.info/export/sites/spaininfo/comun/carrusel-recursos/baleares/vista-palma-de-mallorca-2183112-istock.jpg_369272544.jpg',
+                'thumbnail' => 'http://www.spain.info/export/sites/spaininfo/comun/carrusel-recursos/baleares/vista-palma-de-mallorca-2183112-istock.jpg_369272544.jpg',
+                'city_id' => 5,
+                'booking_id' => -1456928,
+                'hotelbeds_id' => 0,
+                'musements_id' => 40,
+            ),
+            array(
+                'name' => 'Rome',
+                'picture' => 'http://www.spain.info/export/sites/spaininfo/comun/carrusel-recursos/baleares/vista-palma-de-mallorca-2183112-istock.jpg_369272544.jpg',
+                'thumbnail' => 'http://www.spain.info/export/sites/spaininfo/comun/carrusel-recursos/baleares/vista-palma-de-mallorca-2183112-istock.jpg_369272544.jpg',
+                'city_id' => 6,
+                'booking_id' => -126693,
+                'hotelbeds_id' => 0,
+                'musements_id' => 2,
+            ),
         );
 
         return $mockedCities;
