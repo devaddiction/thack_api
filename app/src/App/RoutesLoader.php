@@ -37,6 +37,7 @@ class RoutesLoader
 
         $app->get('/', "web.controller:home");
         $app->get('/city/{id}', "web.controller:city");
+        $app->post('/hotels', "web.controller:hotels");
         $app->get($this->app["api.endpoint"] . '/' . $this->app["api.version"]. '/cities', "cities.controller:getAll");
         $app->get($this->app["api.endpoint"] . '/' . $this->app["api.version"]. '/events/city/{id}', "events.controller:getByCity");
         $app->get($this->app["api.endpoint"] . '/' . $this->app["api.version"]. '/events/city/{id}', "events.controller:getByCity");

@@ -21,11 +21,7 @@
                     <h2>{{ event.name }}</h2>
                     <div class="content">
                         <p>{{ event.price }}</p></br>
-                        {% if event.provider == 'hotelbeds' %}
-                            <img src="http://www.argophilia.com/news/wp-content/uploads/2011/11/hotel.jpg" style="height: 30px;"/>
-                        {% else %}
-                            <img src="http://www.azcoupon.it/media/114.jpg" style="height: 30px;"/>
-                        {% endif %}
+                        {{ event.provider }}
                     </div>
                 </a>
             </article>

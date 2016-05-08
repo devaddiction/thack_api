@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use Symfony\Component\HttpFoundation\Request;
 
 class WebController
 {
@@ -60,5 +61,11 @@ class WebController
             'events' => $this->getEvents($id),
             'city' => $currentCity,
         ));
+    }
+
+    public function hotels(Request $request)
+    {
+        $coordinates = $request->request->get('coordinates');
+        print_r($coordinates); die;
     }
 }
