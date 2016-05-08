@@ -8,13 +8,7 @@ $(document).ready(function () {
 		$.each($('.event-selected'), function () {
 			coordinates.push([$(this).data('latitude'), $(this).data('longitude')])
 		});
-		$.ajax({
-			url: '/hotels',
-			data: '&coordinates=' + JSON.stringify(coordinates),
-			type: 'post',
-			success: function (data) {
-				$(document.body).html(data);
-			}
-		});
+		$('#hidden-coordinates').value(JSON.stringify(coordinates));
+		$('#search-events').submit();
 	});
 });

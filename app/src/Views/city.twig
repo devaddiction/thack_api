@@ -31,7 +31,13 @@
             </article>
         {% endfor %}
     </section>
-    <span id="search-hotels">Search</span>
+    <ul class="actions">
+        <li><input type="submit" id="search-hotels" value="Search" class="special"></li>
+    </ul>
+
+    <form id="search-events" action="/hotels" method="post">
+        <input type="hidden" id="hidden-coordinates" name="coordinates" value=""/>
+    </form>
 {% endblock %}
 
 
