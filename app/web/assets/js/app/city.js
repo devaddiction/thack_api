@@ -8,7 +8,7 @@ $(document).ready(function () {
 		$.each($('.event-selected'), function () {
 			coordinates.push([$(this).data('latitude'), $(this).data('longitude')])
 		});
-		$('#hidden-coordinates').value(JSON.stringify(coordinates));
+		$('#hidden-coordinates').val(JSON.stringify(coordinates));
 		$('#search-events').submit();
 	});
 });
