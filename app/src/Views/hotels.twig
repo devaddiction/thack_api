@@ -2,35 +2,27 @@
 
 {% block header %}
     <header>
-        <h1>{{ city.name }}</h1>
-        <p>{{ city.long_description }}</p>
+        <h1>Best hotels for you</h1>
+        <p>Here you can find the best hotels for your location</p>
     </header>
 {% endblock %}
 
 
 {% block content %}
     <section class="tiles">
-        {% for event in events %}
-            <article class="style{{ random([1,2,3,4,5,6]) }}">
+        {% for hotel in hotels %}
+            <article class="style">
                 <span class="image">
-                    <img src="{{ event.picture }}" alt="{{ event.name }}"/>
+                    <img src="{{ hotel.pictures.hotel_id.url_square60 }}" alt="{{ hotel.hotel_name }}"/>
                 </span>
-                <a href="javascript:void(0)" class="event-selector"
-                   data-latitude="{{ event.latitude }}"
-                   data-longitude="{{ event.longitude }}">
-                    <h2>{{ event.name }}</h2>
+                <a href="javascript:void(0)" class="event-selector">
+                    <h2>{{ hotel.hotel_name }}</h2>
                     <div class="content">
-                        <p>{{ event.price }}</p></br>
-                        {{ event.provider }}
+                        <p>{{ hotel.room_min_price.price }}€</p></br>
+                        {{ hotel.address }}
                     </div>
                 </a>
             </article>
         {% endfor %}
     </section>
-    <span id="search-hotels">Search</span>
-{% endblock %}
-
-
-{% block javascript %}
-    <script src="/assets/js/app/city.js"></script>
 {% endblock %}

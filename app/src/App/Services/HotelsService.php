@@ -63,7 +63,7 @@ class HotelsService extends BaseService
     {
         $url = "https://hacker232:fthriQ0ZWfs@distribution-xml.booking.com/json/getHotelAvailabilityV2?latitude=" .
             $latitude . "&longitude=" . $longitude . "&checkin={$checkIn}&checkout={$checkOut}&room1=A,A&" .
-            "order_by=distance&rows=10";
+            "order_by=distance&rows=10&output=hotel_details";
         $client = new \GuzzleHttp\Client();
 
         $result = $client->request('GET', $url);

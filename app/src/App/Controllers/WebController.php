@@ -66,6 +66,22 @@ class WebController
     public function hotels(Request $request)
     {
         $coordinates = $request->request->get('coordinates');
-        print_r($coordinates); die;
+        $url = "http://api.activiti.es/api/v1/hotels/around";
+        $client = new \GuzzleHttp\Client();
+
+        $result = $client->request('POST', $url, [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ],
+            'json' => array(
+                'coordinates' => $request->request->get('coordinates')
+            )
+        ]);
+        $hotels = $result->getBody();
+
+        return $this->twig->render('hotels.twig', array(
+            'hotels' => $hotels['hotels'],
+        ));
     }
 }
