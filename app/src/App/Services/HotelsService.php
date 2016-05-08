@@ -80,6 +80,7 @@ class HotelsService extends BaseService
                     'price'=>$res['room_min_price']['price'].' '.$res['hotel_currency_code'],
                     'latitude'=>$res['location']['latitude'],
                     'longitude'=>$res['location']['longitude'],
+                    'address'=>$res['address']
 
                 );
             }
