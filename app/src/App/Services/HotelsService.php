@@ -74,14 +74,13 @@ class HotelsService extends BaseService
             $hotels = array();
             foreach ($result['hotels'] as $k => $res) {
                 $ids[] = $res['hotel_id'];
-                $hotels['hotel_'.$res['hotel_id']] = array(
-                    'id'=>$res['hotel_id'],
-                    'name'=>$res['hotel_name'],
-                    'price'=>$res['room_min_price']['price'].' '.$res['hotel_currency_code'],
-                    'latitude'=>$res['location']['latitude'],
-                    'longitude'=>$res['location']['longitude'],
-                    'address'=>$res['address']
-
+                $hotels['hotel_' . $res['hotel_id']] = array(
+                    'id' => $res['hotel_id'],
+                    'name' => $res['hotel_name'],
+                    'price' => $res['room_min_price']['price'] . ' ' . $res['hotel_currency_code'],
+                    'latitude' => $res['location']['latitude'],
+                    'longitude' => $res['location']['longitude'],
+                    'address' => $res['address']
                 );
             }
 
@@ -89,9 +88,9 @@ class HotelsService extends BaseService
                 "?hotel_ids=" . implode(',', $ids);
             $pics = $client->request('GET', $url);
             $pics = json_decode($pics->getBody(), true);
-            
+
             foreach ($pics as $pic) {
-                $hotels['hotel_'.$pic['hotel_id']]['pictures'][] = $pic['url_original'];
+                $hotels['hotel_' . $pic['hotel_id']]['pictures'][] = $pic['url_original'];
             }
 
 
